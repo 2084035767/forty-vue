@@ -1,19 +1,25 @@
-<script setup>
-import LoginPage from './pages/LoginPage.vue'
-import ResignPage from './pages/ResignPage.vue'
-import { useRoute } from 'vue-router'
-const route = useRoute()
-</script>
-
 <template>
-  <div id="app">
-    <LoginPage v-if="route.name === 'login'" />
-    <ResignPage v-else-if="route.name === 'register'" />
-    <div v-else>
-      <Sidebar />
-      <router-view />
-    </div>
-  </div>
+  <el-config-provider :locale="currentLocale">
+    <router-view />
+    <ReDialog />
+  </el-config-provider>
 </template>
 
-<style scoped></style>
+<script lang="ts">
+import { defineComponent } from "vue";
+import { ElConfigProvider } from "element-plus";
+import zhCn from "element-plus/dist/locale/zh-cn.mjs";
+import { ReDialog } from "@/components/ReDialog";
+export default defineComponent({
+  name: "app",
+  components: {
+    [ElConfigProvider.name]: ElConfigProvider,
+    ReDialog
+  },
+  computed: {
+    currentLocale() {
+      return zhCn;
+    }
+  }
+});
+</script>
