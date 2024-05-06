@@ -1,27 +1,27 @@
-import {
-  type RouterHistory,
-  type RouteRecordRaw,
-  type RouteComponent,
-  createWebHistory,
-  createWebHashHistory
-} from "vue-router";
-import { router } from "./index";
-import { isProxy, toRaw } from "vue";
-import { useTimeoutFn } from "@vueuse/core";
-import {
-  isString,
-  cloneDeep,
-  isAllEmpty,
-  intersection,
-  storageLocal,
-  isIncludeAllChildren
-} from "@pureadmin/utils";
 import { getConfig } from "@/config";
 import type { menuType } from "@/layout/types";
-import { buildHierarchyTree } from "@/utils/tree";
-import { userKey, type DataInfo } from "@/utils/auth";
 import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
 import { usePermissionStoreHook } from "@/store/modules/permission";
+import { userKey, type DataInfo } from "@/utils/auth";
+import { buildHierarchyTree } from "@/utils/tree";
+import {
+  cloneDeep,
+  intersection,
+  isAllEmpty,
+  isIncludeAllChildren,
+  isString,
+  storageLocal
+} from "@pureadmin/utils";
+import { useTimeoutFn } from "@vueuse/core";
+import { isProxy, toRaw } from "vue";
+import {
+  createWebHashHistory,
+  createWebHistory,
+  type RouteComponent,
+  type RouteRecordRaw,
+  type RouterHistory
+} from "vue-router";
+import { router } from "./index";
 const IFrame = () => import("@/layout/frameView.vue");
 // https://cn.vitejs.dev/guide/features.html#glob-import
 const modulesRoutes = import.meta.glob("/src/views/**/*.{vue,tsx}");
@@ -367,20 +367,20 @@ function getTopMenu(tag = false): menuType {
 }
 
 export {
-  hasAuth,
-  getAuths,
-  ascending,
-  filterTree,
-  initRouter,
-  getTopMenu,
-  addPathMatch,
-  isOneOfArray,
-  getHistoryMode,
   addAsyncRoutes,
-  getParentPaths,
+  addPathMatch,
+  ascending,
+  filterNoPermissionTree,
+  filterTree,
   findRouteByPath,
-  handleAliveRoute,
-  formatTwoStageRoutes,
   formatFlatteningRoutes,
-  filterNoPermissionTree
+  formatTwoStageRoutes,
+  getAuths,
+  getHistoryMode,
+  getParentPaths,
+  getTopMenu,
+  handleAliveRoute,
+  hasAuth,
+  initRouter,
+  isOneOfArray
 };

@@ -1,18 +1,18 @@
+import { useUserStoreHook } from "@/store/modules/user";
+import { formatToken, getToken } from "@/utils/auth";
 import Axios, {
   type AxiosInstance,
   type AxiosRequestConfig,
   type CustomParamsSerializer
 } from "axios";
-import type {
-  PureHttpError,
-  RequestMethods,
-  PureHttpResponse,
-  PureHttpRequestConfig
-} from "./types.d";
 import { stringify } from "qs";
 import NProgress from "../progress";
-import { getToken, formatToken } from "@/utils/auth";
-import { useUserStoreHook } from "@/store/modules/user";
+import type {
+  PureHttpError,
+  PureHttpRequestConfig,
+  PureHttpResponse,
+  RequestMethods
+} from "./types.d";
 
 // 相关配置请参考：www.axios-js.com/zh-cn/docs/#axios-request-config-1
 const defaultConfig: AxiosRequestConfig = {
@@ -23,6 +23,7 @@ const defaultConfig: AxiosRequestConfig = {
     "Content-Type": "application/json",
     "X-Requested-With": "XMLHttpRequest"
   },
+  // baseURL: import.meta.env.VITE_BASE_URL,
   // 数组格式参数序列化（https://github.com/axios/axios/issues/5142）
   paramsSerializer: {
     serialize: stringify as unknown as CustomParamsSerializer

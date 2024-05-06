@@ -4,9 +4,7 @@
     "prefix": "Vue3.3+",
     "body": [
       "<script setup lang='ts'>",
-      "defineOptions({",
-      "\tname: ''",
-      "})",
+      "",
       "</script>\n",
       "<template>",
       "\t<div>test</div>",
